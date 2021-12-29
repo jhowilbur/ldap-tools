@@ -8,14 +8,14 @@ import java.util.Hashtable;
 
 public class TestLdap {
 
-    private static String URL_LDAP = "ldap://192.168.56.101:389";
-    private static String DOMAIN_GROUP = "dc=redhat,dc=com";
+    private static String URL_LDAP = "ldap://192.168.56.103:389";
+    private static String DOMAIN_GROUP = "dc=example,dc=com";
     private static String DN_ADMIN = "cn=admin," + DOMAIN_GROUP;
-    private static String ADMIN_PASS = "admin";
+    private static String ADMIN_PASS = "password";
 
-    private static String USERNAME = "rhuser";
+    private static String USERNAME = "henry doe";
     private static String USER_PASS = "password";
-    private static String USER_GROUP = "People";
+    private static String USER_GROUP = "people";
 
     public static void main(String[] args) {
         String message;
@@ -64,7 +64,7 @@ public class TestLdap {
             DirContext adminContext = new InitialDirContext(environment);
             String filter = "(&(objectClass=inetOrgPerson)(cn=" + USERNAME + "))";
             String searchControls = searchResult(adminContext, filter);
-            if (searchControls == null) System.out.println("Procura por usuario resultou null, erro login");
+            if (searchControls == null) System.out.println("User search results null");
 
             environment.put(Context.SECURITY_PRINCIPAL, searchControls);
             environment.put(Context.SECURITY_CREDENTIALS, USER_PASS); // insert pass for user founded
