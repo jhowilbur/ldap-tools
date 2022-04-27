@@ -13,7 +13,7 @@ public class TestLdap {
     private static String DN_ADMIN = "cn=admin," + DOMAIN_GROUP;
     private static String ADMIN_PASS = "password";
 
-    private static String USERNAME = "henry doe";
+    private static String USERNAME = "henry";
     private static String USER_PASS = "password";
     private static String USER_GROUP = "people";
 
@@ -62,7 +62,7 @@ public class TestLdap {
 
         try {
             DirContext adminContext = new InitialDirContext(environment);
-            String filter = "(&(objectClass=inetOrgPerson)(cn=" + USERNAME + "))";
+            String filter = "(&(objectClass=inetOrgPerson)(uid=" + USERNAME + "))";
             String searchControls = searchResult(adminContext, filter);
             if (searchControls == null) System.out.println("User search results null");
 

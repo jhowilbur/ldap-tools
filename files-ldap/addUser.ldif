@@ -1,0 +1,12 @@
+# 2 - Adding people to the directory
+# ldapmodify -a -x -H ldap://localhost -D cn=admin,dc=example,dc=org -w admin -f addUser.ldif
+# to check - ldapsearch -x -H ldap://localhost -D cn=admin,dc=example,dc=org -w admin -b ou=user,dc=example,dc=org
+# para deletar abaixo
+# ldappasswd -H ldapi://localhost -w admin -x -D "cn=admin,dc=example,dc=org" -S uid=test,ou=user,dc=example,dc=org
+dn: uid=test,ou=user,dc=example,dc=org
+objectClass: inetOrgPerson
+givenName: Test
+sn: Test
+cn: Test Test
+uid: test
+userPassword: test

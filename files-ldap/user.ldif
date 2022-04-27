@@ -1,0 +1,6 @@
+# http://tutoriels.meddeb.net/openldap-tutorial-adding-data-to-directory/
+# ldapmodify -a -x -H ldap://localhost -D cn=admin,dc=example,dc=org -w admin -f user.ldif
+# 1 - Creating a node for people.
+dn: ou=user,dc=example,dc=org
+objectClass: organizationalUnit
+ou: user

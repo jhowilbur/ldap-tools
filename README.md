@@ -1,5 +1,7 @@
 # LDAP TOOLS FOR TESTS
 
+## great tips to create local details with .ldif
+ - http://tutoriels.meddeb.net/openldap-tutorial-adding-data-to-directory/
 
 ## Steps
 - Use [Vagrant](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiG8f6uxYn1AhXOpZUCHVmFBz8QFnoECAwQAQ&url=https%3A%2F%2Fwww.vagrantup.com%2Fdocs%2Finstallation&usg=AOvVaw1nyxrB5IQXsnJ-hoXUbqja) to start up a VM with LDAP pre-configured. (For more details read Vagrantfile and provision.sh)
@@ -34,4 +36,12 @@ java -jar target/ldap-1.0.jar
 ```
 
 ---
+
+# prepare ldap
+
+```shell
+ldapmodify -a -x -H ldap://localhost -D cn=admin,dc=example,dc=org -w admin -f user.ldif && \
+ldapmodify -a -x -H ldap://localhost -D cn=admin,dc=example,dc=org -w admin -f addUser.ldif && \
+ldapsearch -x -H ldap://localhost -D cn=admin,dc=example,dc=org -w admin -b ou=user,dc=example,dc=org
+```
 
