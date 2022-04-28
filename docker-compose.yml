@@ -1,0 +1,48 @@
+version: '2'
+
+# https://hub.docker.com/r/bitnami/openldap/
+services:
+  openldapbitnami:
+    image: docker.io/bitnami/openldap:latest
+    ports:
+      - '389:1389'
+      - '636:1636'
+    environment:
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=admin
+      - LDAP_USERS=user
+      - LDAP_PASSWORDS=user
+#      - LDAP_ROOT=cn=admin,dc=example,dc=org
+#      - LDAP_BIND_DN=ou=user,dc=example,dc=org
+    volumes:
+      - 'openldap_data_bitnami:/bitnami/openldap'
+
+#  phpadmin:
+#    image: osixia/phpldapadmin:0.9.0
+#    ports:
+#      - '6443:443'
+#    environment:
+#      - PHPLDAPADMIN_LDAP_HOSTS="localhost"
+#      - PHPLDAPADMIN_HTTPS=false
+
+#  openldaposixia:
+#    image: osixia/openldap:1.5.0
+#    ports:
+#      - '389:389'
+#      - '636:636'
+#    environment:
+#      - LDAP_ADMIN_USERNAME=admin
+#      - LDAP_ADMIN_PASSWORD=admin
+#      - LDAP_USERS=user
+#      - LDAP_PASSWORDS=user
+#    volumes:
+#      - 'openldap_data:/var/lib/ldap/'
+#      - 'openldap_data:/etc/ldap/'
+
+volumes:
+  openldap_data_bitnami:
+    driver: local
+
+networks:
+  my-networks:
+    driver: bridge
